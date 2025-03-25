@@ -1,0 +1,43 @@
+.posts-container {
+  min-height: 100vh;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-top: 2.5rem;
+  background-color: black;
+}
+
+.posts-header {
+  font-size: 1.875rem;
+  color:#b2b2b2;
+}
+
+.add-post-link {
+  padding: 0.5rem;
+  background-color: #1e40af;
+  color: #efefef;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.add-post-link:hover {
+  box-shadow: 0 0 0.625rem rgba(37, 99, 235, 0.7);
+}
+
+.post-list-container {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border: 1px solid #6b7280;
+  border-radius: 0.375rem;
+  height: 70vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.no-posts-message {
+  font-size: 1rem;
+  color: #4b5563;
+}
