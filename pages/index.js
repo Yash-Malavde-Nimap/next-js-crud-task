@@ -1,3 +1,5 @@
+// HELLO YASH I AM FROM GITHUB
+
 import Link from "next/link";
 import "./index.css";
 
