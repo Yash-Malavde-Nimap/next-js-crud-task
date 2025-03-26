@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./createPost.css";
 import { useRouter } from "next/router";
+import Button from "@/components/Buttons/Button";
+import Input from "@/components/Inputs/Input";
 
 export default function CreatePost() {
   const [formData, setFormData] = useState({
@@ -50,16 +52,6 @@ export default function CreatePost() {
       console.error("Post Request Error : ", error);
     }
 
-    // setFormData({
-    //   title: "",
-    //   description: "",
-    //   author: "",
-    //   date: "",
-    //   tags: "",
-    //   likes: 0,
-    //   comments: 0,
-    // });
-
     router.push("/posts");
   };
 
@@ -69,16 +61,13 @@ export default function CreatePost() {
         <h2 className="form-title">Create New Post</h2>
         <form className="create-post-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
+            <Input
+              label="Title"
               name="title"
-              id="title"
+              type="text"
               value={formData.title}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
@@ -97,78 +86,61 @@ export default function CreatePost() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="author">Author</label>
-            <input
-              type="text"
+            <Input
+              label="Author"
               name="author"
-              id="author"
+              type="text"
               value={formData.author}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
+            <Input
+              label="Date"
               name="date"
-              id="date"
+              type="date"
               value={formData.date}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="tags">Tags (comma separated)</label>
-            <input
-              type="text"
+            <Input
+              label="Tags (comma separated)"
               name="tags"
-              id="tags"
+              type="text"
               value={formData.tags}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="likes">Likes</label>
-            <input
-              type="number"
+            <Input
+              label="Likes"
               name="likes"
-              id="likes"
+              type="number"
               value={formData.likes}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="comments">Comments</label>
-            <input
-              type="number"
+            <Input
+              label="Comments"
               name="comments"
-              id="comments"
+              type="number"
               value={formData.comments}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
-          <button type="submit" className="submit-btn">
-            Create Post
-          </button>
+          <Button label="Create Post" type="submit" className="submit-btn" />
         </form>
       </div>
     </div>

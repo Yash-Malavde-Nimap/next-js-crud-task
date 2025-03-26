@@ -3,9 +3,12 @@ import "./editPost.css";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { PORTAL } from "@/server-info";
+import Button from "@/components/Buttons/Button";
+import Input from "@/components/Inputs/Input";
 
 export default function EditPost(post) {
-  const newTags = `${[...post.tags]}`;
+  // const newTags = `${[...post.tags]}`;
+  const newTags = post.tags.toString();
   console.log(newTags);
 
   const [formData, setFormData] = useState({ ...post, tags: newTags });
@@ -49,17 +52,7 @@ export default function EditPost(post) {
       console.error("Post Request Error : ", error);
     }
 
-    // setFormData({
-    //   title: "",
-    //   description: "",
-    //   author: "",
-    //   date: "",
-    //   tags: "",
-    //   likes: 0,
-    //   comments: 0,
-    // });
-
-    router.push(`/posts/${post.id}`);
+    router.replace(`/posts/${post.id}`);
   };
 
   return (
@@ -68,16 +61,13 @@ export default function EditPost(post) {
         <h2 className="form-title">Edit Post </h2>
         <form className="edit-post-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
+            <Input
+              label="Title"
               name="title"
-              id="title"
+              type="text"
               value={formData.title}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
@@ -91,83 +81,67 @@ export default function EditPost(post) {
               required
               className="form-input"
               rows="4"
+              lang=""
               autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="author">Author</label>
-            <input
-              type="text"
+            <Input
+              label="Author"
               name="author"
-              id="author"
+              type="text"
               value={formData.author}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
+            <Input
+              label="Date"
               name="date"
-              id="date"
+              type="date"
               value={formData.date}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="tags">Tags (comma separated)</label>
-            <input
-              type="text"
+            <Input
+              label="Tags (comma separated)"
               name="tags"
-              id="tags"
+              type="text"
               value={formData.tags}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="likes">Likes</label>
-            <input
-              type="number"
+            <Input
+              label="Likes"
               name="likes"
-              id="likes"
+              type="number"
               value={formData.likes}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="comments">Comments</label>
-            <input
-              type="number"
+            <Input
+              label="Comments"
               name="comments"
-              id="comments"
+              type="number"
               value={formData.comments}
               onChange={handleChange}
-              required
               className="form-input"
-              autoComplete="off"
             />
           </div>
 
-          <button type="submit" className="submit-btn">
-            Edit Post
-          </button>
+          <Button label="Edit Post" type="submit" className="submit-btn" />
         </form>
       </div>
     </div>

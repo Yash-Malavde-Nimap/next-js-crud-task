@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import './PostCard.css'
+import "./PostCard.css";
 
-function PostCard({post}) {
+function PostCard({ post }) {
   return (
     <Link href={`/posts/${post.id}`} className="link">
       <div>
@@ -18,7 +18,10 @@ function PostCard({post}) {
       </div>
 
       <div>
-        <p className="post-description">{post.description.slice(0, 70)}...</p>
+        <p className="post-description">
+          {post.description.slice(0, 70)}
+          {post.description.length > 70 ? "..." : ""}
+        </p>
       </div>
     </Link>
   );
