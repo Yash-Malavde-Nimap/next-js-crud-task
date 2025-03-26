@@ -19,7 +19,7 @@ export default function Posts() {
 
   return (
     <div className="posts-container">
-      <h6 className="posts-header">All Posts</h6>
+      <h2 className="posts-header">All Posts</h2>
 
       <div>
         <div className="mt-5">

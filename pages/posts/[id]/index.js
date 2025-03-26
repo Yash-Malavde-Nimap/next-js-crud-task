@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
 import "./PostID.css";
 import { PORTAL } from "@/server-info";
+import Button from "@/components/Buttons/Button";
 
 export default function Post({ post }) {
   const router = useRouter();
@@ -62,15 +64,14 @@ export default function Post({ post }) {
           </div>
 
           <div className="actionButtons">
-            <a href={`/posts/edit-post/${post.id}`} className="editButton">
+            <Link href={`/posts/edit-post/${post.id}`} className="editButton">
               Edit
-            </a>
-            <button
-              onClick={() => handleDelete(post.id)}
+            </Link>
+            <Button
+              label="Delete"
+              method={() => handleDelete(post.id)}
               className="deleteButton"
-            >
-              Delete
-            </button>
+            />
           </div>
         </section>
 
@@ -82,9 +83,9 @@ export default function Post({ post }) {
   );
 }
 
-
 export async function getServerSideProps(context) {
   const { id } = context.params;
+
   let url = PORTAL.api_url + `/posts/${id}`;
   try {
     const res = await fetch(url);

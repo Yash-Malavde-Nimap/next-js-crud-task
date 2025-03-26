@@ -1,8 +1,6 @@
 .posts-container {
   min-height: 100vh;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-  padding-top: 2.5rem;
+  padding: 2.5rem 15rem;
   background-color: black;
 }
 
