@@ -4,7 +4,7 @@ export const Links = {
     name: "LMS",
     title: "LMS",
     basename: "/",
-    api_url: "http://localhost:3001",
+    api_url: "http://localhost:3005",
     domain: "http://localhost:3000",
   },
 };

@@ -12,7 +12,7 @@ export default function Post({ post }) {
 
     if (isConfirm) {
       try {
-        await fetch(`http://localhost:3001/posts/${id}`, {
+        await fetch(`${PORTAL.api_url}/posts/${id}`, {
           method: "DELETE",
         });
         router.push("/posts");

@@ -7,7 +7,7 @@ export default function Input({
   className,
 }) {
   return (
-    <div>
+    <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input
         type={type}

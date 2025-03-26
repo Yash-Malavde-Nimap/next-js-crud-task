@@ -41,7 +41,7 @@ export default function CreatePost() {
     };
 
     try {
-      await fetch("http://localhost:3001/posts", {
+      await fetch(`${PORTAL.api_url}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,17 +60,14 @@ export default function CreatePost() {
       <div className="create-post-container">
         <h2 className="form-title">Create New Post</h2>
         <form className="create-post-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <Input
-              label="Title"
-              name="title"
-              type="text"
-              value={formData.title}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
-
+          <Input
+            label="Title"
+            name="title"
+            type="text"
+            value={formData.title}
+            onChange={handleChange}
+            className="form-input"
+          />
           <div className="form-group">
             <label htmlFor="description">Description</label>
             <textarea
@@ -85,60 +82,50 @@ export default function CreatePost() {
             />
           </div>
 
-          <div className="form-group">
-            <Input
-              label="Author"
-              name="author"
-              type="text"
-              value={formData.author}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Author"
+            name="author"
+            type="text"
+            value={formData.author}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Date"
-              name="date"
-              type="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Date"
+            name="date"
+            type="date"
+            value={formData.date}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Tags (comma separated)"
-              name="tags"
-              type="text"
-              value={formData.tags}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Tags (comma separated)"
+            name="tags"
+            type="text"
+            value={formData.tags}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Likes"
-              name="likes"
-              type="number"
-              value={formData.likes}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Likes"
+            name="likes"
+            type="number"
+            value={formData.likes}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Comments"
-              name="comments"
-              type="number"
-              value={formData.comments}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Comments"
+            name="comments"
+            type="number"
+            value={formData.comments}
+            onChange={handleChange}
+            className="form-input"
+          />
 
           <Button label="Create Post" type="submit" className="submit-btn" />
         </form>

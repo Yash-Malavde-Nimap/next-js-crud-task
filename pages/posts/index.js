@@ -7,14 +7,26 @@ import { PORTAL } from "@/server-info";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Posts() {
-  const { data: posts, error,isLoading  } = useSWR(`${PORTAL.api_url}/posts`, fetcher);
+  const {
+    data: posts,
+    error,
+    isLoading,
+  } = useSWR(`${PORTAL.api_url}/posts`, fetcher);
 
-  if (isLoading ) {
-    return <div className="min-h-screen bg-black text-neutral-700 text-4xl flex justify-center items-center">Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-black text-neutral-700 text-4xl flex justify-center items-center">
+        Loading...
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="min-h-screen bg-black text-red-700 text-4xl flex justify-center items-center">Error loading posts.</div>;
+    return (
+      <div className="min-h-screen bg-black text-red-700 text-4xl flex justify-center items-center">
+        Error loading posts.
+      </div>
+    );
   }
 
   return (

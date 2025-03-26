@@ -41,7 +41,7 @@ export default function EditPost(post) {
     };
 
     try {
-      await fetch(`http://localhost:3001/posts/${id}`, {
+      await fetch(`${PORTAL.api_url}/posts/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -60,16 +60,14 @@ export default function EditPost(post) {
       <div className="edit-post-container">
         <h2 className="form-title">Edit Post </h2>
         <form className="edit-post-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <Input
-              label="Title"
-              name="title"
-              type="text"
-              value={formData.title}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Title"
+            name="title"
+            type="text"
+            value={formData.title}
+            onChange={handleChange}
+            className="form-input"
+          />
 
           <div className="form-group">
             <label htmlFor="description">Description</label>
@@ -86,60 +84,50 @@ export default function EditPost(post) {
             />
           </div>
 
-          <div className="form-group">
-            <Input
-              label="Author"
-              name="author"
-              type="text"
-              value={formData.author}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Author"
+            name="author"
+            type="text"
+            value={formData.author}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Date"
-              name="date"
-              type="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Date"
+            name="date"
+            type="date"
+            value={formData.date}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Tags (comma separated)"
-              name="tags"
-              type="text"
-              value={formData.tags}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Tags (comma separated)"
+            name="tags"
+            type="text"
+            value={formData.tags}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Likes"
-              name="likes"
-              type="number"
-              value={formData.likes}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Likes"
+            name="likes"
+            type="number"
+            value={formData.likes}
+            onChange={handleChange}
+            className="form-input"
+          />
 
-          <div className="form-group">
-            <Input
-              label="Comments"
-              name="comments"
-              type="number"
-              value={formData.comments}
-              onChange={handleChange}
-              className="form-input"
-            />
-          </div>
+          <Input
+            label="Comments"
+            name="comments"
+            type="number"
+            value={formData.comments}
+            onChange={handleChange}
+            className="form-input"
+          />
 
           <Button label="Edit Post" type="submit" className="submit-btn" />
         </form>
