@@ -3,22 +3,19 @@ import Link from "next/link";
 import "./PostID.css";
 import { PORTAL } from "@/server-info";
 import Button from "@/components/Buttons/Button";
+import Dialog from "@/components/DialogBox/Dialog";
 
 export default function Post({ post }) {
   const router = useRouter();
 
   const handleDelete = async (id) => {
-    const isConfirm = confirm("Are you sure you want to Delete the Post?");
-
-    if (isConfirm) {
-      try {
-        await fetch(`${PORTAL.api_url}/posts/${id}`, {
-          method: "DELETE",
-        });
-        router.push("/posts");
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      await fetch(`${PORTAL.api_url}/posts/${id}`, {
+        method: "DELETE",
+      });
+      router.push("/posts");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -64,14 +61,21 @@ export default function Post({ post }) {
           </div>
 
           <div className="actionButtons">
-            <Link href={`/posts/edit-post/${post.id}`} className="editButton">
+            {/* <Link href={`/posts/edit-post/${post.id}`} className="editButton">
               Edit
-            </Link>
-            <Button
+            </Link> */}
+
+            <Dialog button="edit" className="editButton" id={post.id} />
+            <Dialog
+              button="delete"
+              className="deleteButton"
+              method={() => handleDelete(post.id)}
+            />
+            {/* <Button
               label="Delete"
               method={() => handleDelete(post.id)}
               className="deleteButton"
-            />
+            /> */}
           </div>
         </section>
 

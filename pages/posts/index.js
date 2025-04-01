@@ -1,8 +1,10 @@
-import PostCard from "@/components/CardPost/PostCard";
 import Link from "next/link";
 import "./Posts.css";
 import useSWR from "swr";
 import { PORTAL } from "@/server-info";
+import Loading from "@/components/Loading";
+import Error from "@/components/Error";
+import PostCard from "@/components/CardPost/PostCard";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -14,19 +16,11 @@ export default function Posts() {
   } = useSWR(`${PORTAL.api_url}/posts`, fetcher);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-black text-neutral-700 text-4xl flex justify-center items-center">
-        Loading...
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <div className="min-h-screen bg-black text-red-700 text-4xl flex justify-center items-center">
-        Error loading posts.
-      </div>
-    );
+    return <Error />;
   }
 
   return (

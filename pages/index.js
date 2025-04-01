@@ -7,15 +7,20 @@ export const metaData = {
   title: "Next.js CRUD",
 };
 
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/Navbar/Navbar";
+
 export default function Home() {
   return (
     <>
       <section className="main-body">
         <div className="main-heading">
-          <h2 >CRUD APP Using Next.js</h2>
+          <h2>CRUD APP Using Next.js</h2>
         </div>
 
-        <Link className="link-button" href="/posts">See All Posts</Link>
+        <Button variant="secondary">
+          <Link href="/posts">See All Posts</Link>
+        </Button>
       </section>
     </>
   );
