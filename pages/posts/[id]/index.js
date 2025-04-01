@@ -8,6 +8,8 @@ import Dialog from "@/components/DialogBox/Dialog";
 export default function Post({ post }) {
   const router = useRouter();
 
+  let isAuthenticated = false;
+
   const handleDelete = async (id) => {
     try {
       await fetch(`${PORTAL.api_url}/posts/${id}`, {
@@ -65,12 +67,16 @@ export default function Post({ post }) {
               Edit
             </Link> */}
 
-            <Dialog button="edit" className="editButton" id={post.id} />
-            <Dialog
-              button="delete"
-              className="deleteButton"
-              method={() => handleDelete(post.id)}
-            />
+            {isAuthenticated && (
+              <>
+                <Dialog button="edit" className="editButton" id={post.id} />
+                <Dialog
+                  button="delete"
+                  className="deleteButton"
+                  method={() => handleDelete(post.id)}
+                />
+              </>
+            )}
             {/* <Button
               label="Delete"
               method={() => handleDelete(post.id)}

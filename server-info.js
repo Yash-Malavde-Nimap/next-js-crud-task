@@ -1,4 +1,5 @@
 export const server = "DEV";
+
 export const Links = {
   "DEV": {
     name: "LMS",
