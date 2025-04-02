@@ -6,7 +6,9 @@ import Loading from "@/components/Loading";
 import Error from "@/components/Error";
 import PostCard from "@/components/CardPost/PostCard";
 
+
 const fetcher = (url) => fetch(url).then((res) => res.json());
+// const fetcher = async (url) => await axios.get(url);
 
 export default function Posts() {
   const {

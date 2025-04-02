@@ -1,34 +1,66 @@
 .main-body {
   min-height: 100vh;
-  background-color: black;
+  background-color: #08111d;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .container {
-  width: 1200px;
-  /* margin: 0 auto; */
-  margin: 4rem auto;
+  margin: 4rem 8rem;
   padding: 3rem;
   background-color: #aaaaaa84;
   border-radius: 10px;
   box-shadow: 0 40px 80px rgba(121, 121, 121, 0.1);
-  font-family: "Arial", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .headerSection {
-  /* border-bottom: 2px solid #f1f1f1; */
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   margin-bottom: 20px;
-  /* color: #efefef; */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  width: fit-content;
+}
+
+.right-image {
+  width: 30rem;
+  border-radius: 10px;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #b9b9b9;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: white;
   margin-bottom: 10px;
+  line-height: 50px;
+  /* text-align: ce; */
+}
+
+strong {
+  color: white;
+  font-size: 1.2rem;
+}
+
+span{
+  font-size: 1.2rem;
 }
 
 .metaInfo {
@@ -46,11 +78,16 @@
 
 .tagsSection {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .tagsList {
   list-style-type: none;
   padding-left: 0;
+  display: flex;
+  gap: 5px;
 }
 
 .tag {
@@ -58,14 +95,15 @@
   background-color: rgb(94, 94, 255);
   color: white;
   padding: 5px 10px;
-  border-radius: 15px;
-  margin-right: 10px;
-  margin-top: 5px;
-  font-size: 0.9rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
 }
 
-.tagsSection p{
+.tagsSection p {
   color: #b9b9b9;
+}
+.tagsSection strong {
+  font-size: 1.2rem;
 }
 
 .actionButtons {
@@ -111,5 +149,5 @@
   font-size: 1.1rem;
   line-height: 1.6;
   color: white;
-  margin-top: 10px;
+  margin-top: 3rem;
 }

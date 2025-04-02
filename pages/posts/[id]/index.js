@@ -1,24 +1,17 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
 import "./PostID.css";
 import { PORTAL } from "@/server-info";
-import Button from "@/components/Buttons/Button";
 import Dialog from "@/components/DialogBox/Dialog";
+import { deleteAPI } from "@/apiFetchers/api";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Post({ post }) {
+  let isAuthenticated = false;
   const router = useRouter();
 
-  let isAuthenticated = false;
-
   const handleDelete = async (id) => {
-    try {
-      await fetch(`${PORTAL.api_url}/posts/${id}`, {
-        method: "DELETE",
-      });
-      router.push("/posts");
-    } catch (error) {
-      console.log(error);
-    }
+    await deleteAPI(id);
+    router.push("/posts");
   };
 
   if (!post) {
@@ -30,58 +23,62 @@ export default function Post({ post }) {
       <div className="container">
         <section className="headerSection">
           <h2 className="title">{post.title}</h2>
-          <div className="metaInfo">
-            <p className="metaText">
-              <strong>Author: </strong>
-              <span>{post.author}</span>
-            </p>
-            <p className="metaText">
-              <strong>Uploaded On: </strong>
-              {post.date}
-            </p>
-            <p className="metaText">
-              <strong>Likes: </strong>
-              {post.likes}
-            </p>
-            <p className="metaText">
-              <strong>Comments: </strong>
-              {post.comments}
-            </p>
-          </div>
+          <div className="details">
+            <div className="left">
+              <div className="metaInfo">
+                <p className="metaText">
+                  <strong>Author : </strong>
+                  <span>{post.author}</span>
+                </p>
+                <p className="metaText">
+                  <strong>Uploaded On : </strong>
+                  <span>{post.date}</span>
+                </p>
+                <p className="metaText">
+                  <strong>Likes : </strong>
+                  <span>{post.likes}</span>
+                </p>
+                <p className="metaText">
+                  <strong>Comments : </strong>
+                  <span>{post.comments}</span>
+                </p>
+              </div>
 
-          <div className="tagsSection">
-            <p>
-              <strong>Tags:</strong>
-            </p>
-            <ul className="tagsList">
-              {post.tags.map((tag, index) => (
-                <li key={index} className="tag">
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </div>
+              <div className="tagsSection">
+                <strong>Tags :</strong>
 
-          <div className="actionButtons">
-            {/* <Link href={`/posts/edit-post/${post.id}`} className="editButton">
-              Edit
-            </Link> */}
+                <ul className="tagsList">
+                  {post.tags.map((tag, index) => (
+                    <li key={index} className="tag">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {isAuthenticated && (
-              <>
-                <Dialog button="edit" className="editButton" id={post.id} />
-                <Dialog
-                  button="delete"
-                  className="deleteButton"
-                  method={() => handleDelete(post.id)}
-                />
-              </>
-            )}
-            {/* <Button
-              label="Delete"
-              method={() => handleDelete(post.id)}
-              className="deleteButton"
-            /> */}
+              <div className="actionButtons">
+                {isAuthenticated && (
+                  <>
+                    <Dialog button="edit" className="editButton" id={post.id} />
+                    <Dialog
+                      button="delete"
+                      className="deleteButton"
+                      method={() => handleDelete(post.id)}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="right">
+              <Image
+                className="right-image"
+                src={post.image_url}
+                height={200}
+                width={200}
+                alt="1234"
+              />
+            </div>
           </div>
         </section>
 
@@ -99,6 +96,8 @@ export async function getServerSideProps(context) {
   let url = PORTAL.api_url + `/posts/${id}`;
   try {
     const res = await fetch(url);
+    // const res = await axios.get(url);
+    console.log(res);
     if (!res.ok) {
       throw new Error(`Failed to fetch data, status code: ${res.status}`);
     }

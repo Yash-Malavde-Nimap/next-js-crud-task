@@ -3,6 +3,7 @@ import "./createPost.css";
 import { useRouter } from "next/router";
 import Button from "@/components/Buttons/Button";
 import Input from "@/components/Inputs/Input";
+import { postDataAPI } from "@/apiFetchers/api";
 
 export default function CreatePost() {
   const [formData, setFormData] = useState({
@@ -13,9 +14,11 @@ export default function CreatePost() {
     tags: "",
     likes: 0,
     comments: 0,
+    image_url:"https://img.freepik.com/free-photo/creative-copywriting-commercial-text-seo-editing_107791-15687.jpg?semt=ais_hybrid",
   });
 
   const router = useRouter();
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -40,18 +43,7 @@ export default function CreatePost() {
       comments: parseInt(formData.comments),
     };
 
-    try {
-      await fetch(`${PORTAL.api_url}/posts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newPost),
-      });
-    } catch (error) {
-      console.error("Post Request Error : ", error);
-    }
-
+    await postDataAPI(JSON.stringify(newPost));
     router.push("/posts");
   };
 

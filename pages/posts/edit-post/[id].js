@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 import { PORTAL } from "@/server-info";
 import Button from "@/components/Buttons/Button";
 import Input from "@/components/Inputs/Input";
+import { editDataAPI } from "@/apiFetchers/api";
 
 export default function EditPost(post) {
   // const newTags = `${[...post.tags]}`;
   const newTags = post.tags.toString();
-  console.log(newTags);
 
   const [formData, setFormData] = useState({ ...post, tags: newTags });
 
@@ -38,19 +38,11 @@ export default function EditPost(post) {
       tags: tagsArray,
       likes: parseInt(formData.likes),
       comments: parseInt(formData.comments),
+      image_url:
+        "https://img.freepik.com/free-photo/creative-copywriting-commercial-text-seo-editing_107791-15687.jpg?semt=ais_hybrid",
     };
 
-    try {
-      await fetch(`${PORTAL.api_url}/posts/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newPost),
-      });
-    } catch (error) {
-      console.error("Post Request Error : ", error);
-    }
+    await editDataAPI(JSON.stringify(newPost), id);
 
     router.replace(`/posts/${post.id}`);
   };
