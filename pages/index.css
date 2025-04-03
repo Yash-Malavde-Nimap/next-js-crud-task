@@ -25,20 +25,13 @@
   transition: ease-in-out 0.2s;
 }
 
-/* .left-button:hover {
-  background: linear-gradient(45deg, rgb(135, 135, 254), rgb(94, 94, 255));
-} */
-
 .left-heading {
   width: 30rem;
-  /* background: white; */
   text-align: left;
   color: rgb(196, 196, 196);
   font-size: 3rem;
   font-weight: bolder;
   line-height: 50px;
-  
-  /* margin-bottom: 2rem; */
 }
 
 .left-desc {
@@ -48,8 +41,6 @@
 }
 
 .right-div {
-  /* width: 400px */
-  /* background-color: beige; */
   display: flex;
   justify-content: center;
   align-items: center;

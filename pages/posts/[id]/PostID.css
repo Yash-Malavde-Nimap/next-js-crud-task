@@ -17,7 +17,6 @@
 }
 
 .headerSection {
-  /* padding-bottom: 20px; */
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
@@ -51,7 +50,6 @@
   color: white;
   margin-bottom: 10px;
   line-height: 50px;
-  /* text-align: ce; */
 }
 
 strong {
@@ -71,10 +69,6 @@ span{
 .metaText {
   margin: 5px 0;
 }
-
-/* .metaText span {
-  font-weight: bold;
-} */
 
 .tagsSection {
   margin-top: 20px;
@@ -139,11 +133,6 @@ span{
 .deleteButton:hover {
   background-color: #e41f1f;
 }
-
-/* .descriptionSection {
-  padding-top: 20px;
-  color: white;
-} */
 
 .description {
   font-size: 1.1rem;

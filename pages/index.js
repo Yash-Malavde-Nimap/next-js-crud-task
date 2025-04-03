@@ -1,5 +1,4 @@
-// HELLO YASH I AM FROM GITHUB
-
+/* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
 import "./index.css";
 
@@ -42,9 +41,8 @@ export default function Home() {
         </div>
 
         <div className="right-div">
-          {/* <h2 className="right-heading">Image</h2> */}
           <Image
-          className="right-image"
+            className="right-image"
             width={300}
             height={300}
             src="https://img.freepik.com/free-vector/blogging-fun-content-creation-online-streaming-video-blog-young-girl-making-selfie-social-network-sharing-feedback-self-promotion-strategy_335657-2386.jpg?semt=ais_hybrid"

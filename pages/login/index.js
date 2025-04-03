@@ -47,7 +47,6 @@ export default function Login({data}) {
       if (!localStorage.getItem("authToken")) {
         localStorage.setItem("authToken", JSON.stringify(payload));
       }
-      // e.target.reset();
       router.push("/");
     } catch (error) {
       console.error("Error:", error);
@@ -85,8 +84,6 @@ export default function Login({data}) {
     </div>
   );
 }
-
-// now the value of the email and password must be set to "" after the login button is clicked and dont add comments in the code'
 export async function getServerSideProps(context) {
   let url = PORTAL.api_url + "/users";
   let res = await axios.get(url);

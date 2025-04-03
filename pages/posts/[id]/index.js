@@ -96,7 +96,6 @@ export async function getServerSideProps(context) {
   let url = PORTAL.api_url + `/posts/${id}`;
   try {
     const res = await fetch(url);
-    // const res = await axios.get(url);
     console.log(res);
     if (!res.ok) {
       throw new Error(`Failed to fetch data, status code: ${res.status}`);

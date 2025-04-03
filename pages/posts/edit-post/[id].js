@@ -30,7 +30,6 @@ export default function EditPost(post) {
     const tagsArray = formData.tags.split(",").map((tag) => tag.trim());
 
     const newPost = {
-      // id: Date.now().toString(),
       title: formData.title,
       description: formData.description,
       author: formData.author,
