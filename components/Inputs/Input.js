@@ -1,10 +1,13 @@
+import React from "react";
+
 export default function Input({
-    label,
+  label,
   name,
   type,
-  value,
-  onChange,
+  register,
+  required = false,
   className,
+  error,
 }) {
   return (
     <div className="form-group">
@@ -13,12 +16,11 @@ export default function Input({
         type={type}
         name={name}
         id={name}
-        value={value}
-        onChange={onChange}
-        required
+        {...register(name, { required })}
         className={className}
         autoComplete="off"
       />
+      {error && <span className="error-message">{label} is required</span>}
     </div>
   );
 }

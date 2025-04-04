@@ -6,7 +6,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Post({ post }) {
-  let isAuthenticated = false;
+  let isAuthenticated = true;
+  // console.log(isAuthenticated);
+
   const router = useRouter();
 
   const handleDelete = async (id) => {
@@ -34,6 +36,12 @@ export default function Post({ post }) {
                   <strong>Uploaded On : </strong>
                   <span>{post.date}</span>
                 </p>
+                {post.updatedAt && (
+                  <p className="metaText">
+                    <strong>Updated At : </strong>
+                    <span>{post.updatedAt}</span>
+                  </p>
+                )}
                 <p className="metaText">
                   <strong>Likes : </strong>
                   <span>{post.likes}</span>

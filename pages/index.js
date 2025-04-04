@@ -14,8 +14,10 @@ import Image from "next/image";
 export default function Home() {
   const router = useRouter();
 
+  let user;
+
   useEffect(() => {
-    let user = localStorage.getItem("authToken");
+    user = JSON.parse(localStorage.getItem("authToken"));
     console.log(user);
 
     if (!user) {
@@ -38,11 +40,26 @@ export default function Home() {
           <Button variant="secondary" className="left-button">
             <Link href="/posts">Learn More</Link>
           </Button>
+
+          {user && user.email ? (
+            ""
+          ) : (
+            <Button
+              onClick={() => {
+                localStorage.removeItem("authToken");
+                window.location.reload();
+              }}
+              variant="destructive"
+              className="left-button"
+            >
+              Logout
+            </Button>
+          )}
         </div>
 
         <div className="right-div">
           <Image
-            className="right-image"
+            className="right-image hidden lg:flex"
             width={300}
             height={300}
             src="https://img.freepik.com/free-vector/blogging-fun-content-creation-online-streaming-video-blog-young-girl-making-selfie-social-network-sharing-feedback-self-promotion-strategy_335657-2386.jpg?semt=ais_hybrid"

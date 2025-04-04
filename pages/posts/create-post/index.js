@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import "./createPost.css";
 import { useRouter } from "next/router";
 import Button from "@/components/Buttons/Button";
@@ -6,44 +7,42 @@ import Input from "@/components/Inputs/Input";
 import { postDataAPI } from "@/apiFetchers/api";
 
 export default function CreatePost() {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    author: "",
-    date: "",
-    tags: "",
-    likes: 0,
-    comments: 0,
-    image_url:"https://img.freepik.com/free-photo/creative-copywriting-commercial-text-seo-editing_107791-15687.jpg?semt=ais_hybrid",
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+      author: "",
+      date: "",
+      tags: "",
+      likes: 0,
+      comments: 0,
+    },
   });
 
-  const router = useRouter();
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const tagsArray = formData.tags.split(",").map((tag) => tag.trim());
+  const onSubmit = async (data) => {
+    // Split tags by comma and trim spaces
+    const tagsArray = data.tags.split(",").map((tag) => tag.trim());
 
     const newPost = {
-      id: Date.now().toString(),
-      title: formData.title,
-      description: formData.description,
-      author: formData.author,
-      date: formData.date,
+      id: "" + Date.now().toString(),
+      title: data.title,
+      description: data.description,
+      author: data.author,
+      date: "" + new Date().toLocaleString(),
       tags: tagsArray,
-      likes: parseInt(formData.likes),
-      comments: parseInt(formData.comments),
+      likes: parseInt(data.likes),
+      comments: parseInt(data.comments),
+      image_url:
+        "https://img.freepik.com/free-photo/creative-copywriting-commercial-text-seo-editing_107791-15687.jpg?semt=ais_hybrid",
     };
 
-    await postDataAPI(JSON.stringify(newPost));
+    await postDataAPI(newPost);
     router.push("/posts");
   };
 
@@ -51,73 +50,79 @@ export default function CreatePost() {
     <div className="create-post">
       <div className="create-post-container">
         <h2 className="form-title">Create New Post</h2>
-        <form className="create-post-form" onSubmit={handleSubmit}>
+        <form className="create-post-form" onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Title"
             name="title"
             type="text"
-            value={formData.title}
-            onChange={handleChange}
+            register={register}
+            required
             className="form-input"
+            error={errors.title}
           />
           <div className="form-group">
             <label htmlFor="description">Description</label>
             <textarea
               name="description"
               id="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
+              {...register("description", { required: true })}
               className="form-input"
-              rows="4"
-              autoComplete="off"
+              rows="3"
             />
+            {errors.description && (
+              <span className="error-message">Description is required</span>
+            )}
           </div>
 
           <Input
             label="Author"
             name="author"
             type="text"
-            value={formData.author}
-            onChange={handleChange}
+            register={register}
+            required
             className="form-input"
+            error={errors.author}
           />
 
-          <Input
+          {/* <Input
             label="Date"
             name="date"
             type="date"
-            value={formData.date}
-            onChange={handleChange}
+            register={register}
+            required
             className="form-input"
-          />
+            error={errors.date}
+          /> */}
 
           <Input
             label="Tags (comma separated)"
             name="tags"
             type="text"
-            value={formData.tags}
-            onChange={handleChange}
+            register={register}
+            required
             className="form-input"
+            error={errors.tags}
           />
 
-          <Input
+          {/* <Input
             label="Likes"
             name="likes"
             type="number"
-            value={formData.likes}
-            onChange={handleChange}
+            register={register}
+            required
             className="form-input"
+            error={errors.likes}
           />
 
           <Input
             label="Comments"
             name="comments"
             type="number"
-            value={formData.comments}
-            onChange={handleChange}
+            register={register}
+            required
             className="form-input"
-          />
+            error={errors.comments}
+          /> */}
 
           <Button label="Create Post" type="submit" className="submit-btn" />
         </form>
