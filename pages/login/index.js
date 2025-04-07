@@ -132,7 +132,7 @@ export default function Login({ users }) {
     }
 
     const payload = {
-      id: "" +  Math.floor(Math.random() * 100000),
+      id: "" + Math.floor(Math.random() * 100000),
       email,
       password: btoa(password),
       role,
@@ -228,9 +228,11 @@ export default function Login({ users }) {
 export async function getServerSideProps(context) {
   let url = PORTAL.api_url + "/users";
   let res = await axios.get(url);
-
-  console.log(res);
-
+  console.log(res.data)
+  // if (!res.ok) {
+  //   throw new Error(`Failed to fetch data, status code: ${res.status}`);
+  // }
+  
   let users = res.data;
   return { props: { users } };
 }

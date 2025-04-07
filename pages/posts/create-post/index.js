@@ -4,7 +4,7 @@ import "./createPost.css";
 import { useRouter } from "next/router";
 import Button from "@/components/Buttons/Button";
 import Input from "@/components/Inputs/Input";
-import { postDataAPI } from "@/apiFetchers/api";
+import { postDataAPI } from "@/pages/posts/_actions/post_actions.js";
 
 export default function CreatePost() {
   const router = useRouter();

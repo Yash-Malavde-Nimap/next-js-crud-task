@@ -1,7 +1,7 @@
 import "./PostID.css";
 import { PORTAL } from "@/server-info";
 import Dialog from "@/components/DialogBox/Dialog";
-import { deleteAPI } from "@/apiFetchers/api";
+import { deleteAPI } from "@/pages/posts/_actions/post_actions";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -84,6 +84,7 @@ export default function Post({ post }) {
                 src={post.image_url}
                 height={200}
                 width={200}
+                priority={true}
                 alt="1234"
               />
             </div>
@@ -104,7 +105,6 @@ export async function getServerSideProps(context) {
   let url = PORTAL.api_url + `/posts/${id}`;
   try {
     const res = await fetch(url);
-    console.log(res);
     if (!res.ok) {
       throw new Error(`Failed to fetch data, status code: ${res.status}`);
     }

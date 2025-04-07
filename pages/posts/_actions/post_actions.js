@@ -2,7 +2,6 @@ import { PORTAL } from "@/server-info";
 import axios from "axios";
 
 export const deleteAPI = async (id) => {
-  "use server"
   try {
     await axios.delete(`${PORTAL.api_url}/posts/${id}`);
   } catch (error) {

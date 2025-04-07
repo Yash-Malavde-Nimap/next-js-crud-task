@@ -37,24 +37,26 @@ export default function Home() {
             Stay Ahead with the Latest in Tech, Trends, and Innovation
           </p>
 
-          <Button variant="secondary" className="left-button">
-            <Link href="/posts">Learn More</Link>
-          </Button>
-
-          {user && user.email ? (
-            ""
-          ) : (
-            <Button
-              onClick={() => {
-                localStorage.removeItem("authToken");
-                window.location.reload();
-              }}
-              variant="destructive"
-              className="left-button"
-            >
-              Logout
+          <div className="left-buttons">
+            <Button variant="secondary" className="left-button">
+              <Link href="/posts">Learn More</Link>
             </Button>
-          )}
+
+            {user && user.email ? (
+              ""
+            ) : (
+              <Button
+                onClick={() => {
+                  localStorage.removeItem("authToken");
+                  window.location.reload();
+                }}
+                variant="destructive"
+                className="logout-button"
+              >
+                Logout
+              </Button>
+            )}
+          </div>
         </div>
 
         <div className="right-div">

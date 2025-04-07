@@ -149,7 +149,7 @@ import { useForm } from "react-hook-form";
 import { PORTAL } from "@/server-info";
 import Button from "@/components/Buttons/Button";
 import Input from "@/components/Inputs/Input";
-import { editDataAPI } from "@/apiFetchers/api";
+import { editDataAPI } from "@/pages/posts/_actions/post_actions";
 
 export default function EditPost({ post }) {
   const router = useRouter();

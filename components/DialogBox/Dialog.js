@@ -63,7 +63,6 @@ const Dialog = ({ button, className, id, method }) => {
       </div>
     );
   }
-  return <div>Dialog</div>;
 };
 
 export default Dialog;
