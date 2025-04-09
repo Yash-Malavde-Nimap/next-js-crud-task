@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// /* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
 import "./index.css";
 
@@ -7,23 +7,23 @@ export const metaData = {
 };
 
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+// import { useEffect } from "react";
+// import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Home() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  let user;
+  // let user;
 
-  useEffect(() => {
-    user = JSON.parse(localStorage.getItem("authToken"));
-    console.log(user);
+  // useEffect(() => {
+  //   user = JSON.parse(localStorage.getItem("authToken"));
+  //   console.log(user);
 
-    if (!user) {
-      router.push("/login");
-    }
-  }, [1]);
+  //   if (!user) {
+  //     router.push("/login");
+  //   }
+  // }, [1]);
 
   return (
     <>
@@ -42,20 +42,20 @@ export default function Home() {
               <Link href="/posts">Learn More</Link>
             </Button>
 
-            {user && user.email ? (
-              ""
-            ) : (
               <Button
                 onClick={() => {
                   localStorage.removeItem("authToken");
-                  window.location.reload();
+                  // window.location.reload();
                 }}
                 variant="destructive"
                 className="logout-button"
               >
                 Logout
               </Button>
-            )}
+                {/* {user && user.email ? (
+                  ""
+                ) : (
+            )} */}
           </div>
         </div>
 

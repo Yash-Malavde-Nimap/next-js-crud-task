@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Post({ post }) {
-  let isAuthenticated = true;
+  let isAuthenticated = false;
   // console.log(isAuthenticated);
 
   const router = useRouter();
@@ -79,6 +79,11 @@ export default function Post({ post }) {
             </div>
 
             <div className="right">
+
+              {/* <div className="like-share-buttons">
+                <button className="like">Like</button>
+                <button className="share">Share</button>
+              </div> */}
               <Image
                 className="right-image"
                 src={post.image_url}

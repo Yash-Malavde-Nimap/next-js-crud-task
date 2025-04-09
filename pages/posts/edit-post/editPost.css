@@ -8,7 +8,7 @@
 }
 
 .edit-post-container {
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,9 +26,12 @@
   color: white;
 }
 
-.edit-post-form {
+.create-post-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding: 0 2rem;
+  /* background-color: black; */
 }
 
 .form-group {
