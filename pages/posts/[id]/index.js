@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Post({ post }) {
-  let isAuthenticated = false;
+  let isAuthenticated = true;
   // console.log(isAuthenticated);
 
   const router = useRouter();
@@ -27,6 +27,7 @@ export default function Post({ post }) {
           <h2 className="title">{post.title}</h2>
           <div className="details">
             <div className="left">
+              
               <div className="metaInfo">
                 <p className="metaText">
                   <strong>Author : </strong>
@@ -34,7 +35,7 @@ export default function Post({ post }) {
                 </p>
                 <p className="metaText">
                   <strong>Uploaded On : </strong>
-                  <span>{post.date}</span>
+                  <span>{post.createdAt}</span>
                 </p>
                 {post.updatedAt && (
                   <p className="metaText">
@@ -44,11 +45,11 @@ export default function Post({ post }) {
                 )}
                 <p className="metaText">
                   <strong>Likes : </strong>
-                  <span>{post.likes}</span>
+                  <span>{post.likes.length}</span>
                 </p>
                 <p className="metaText">
                   <strong>Comments : </strong>
-                  <span>{post.comments}</span>
+                  <span>{post.comments.length}</span>
                 </p>
               </div>
 
@@ -56,11 +57,12 @@ export default function Post({ post }) {
                 <strong>Tags :</strong>
 
                 <ul className="tagsList">
-                  {post.tags.map((tag, index) => (
-                    <li key={index} className="tag">
-                      {tag}
-                    </li>
-                  ))}
+                  {post.tags &&
+                    post.tags.map((tag, index) => (
+                      <li key={index} className="tag">
+                        {tag}
+                      </li>
+                    ))}
                 </ul>
               </div>
 
@@ -79,7 +81,6 @@ export default function Post({ post }) {
             </div>
 
             <div className="right">
-
               {/* <div className="like-share-buttons">
                 <button className="like">Like</button>
                 <button className="share">Share</button>

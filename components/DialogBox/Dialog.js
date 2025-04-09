@@ -15,9 +15,9 @@ import Button from "../Buttons/Button";
 const Dialog = ({ button, className, id, method }) => {
   if (button == "edit") {
     return (
-      <div className={className}>
+      <div>
         <AlertDialog>
-          <AlertDialogTrigger>Edit</AlertDialogTrigger>
+          <AlertDialogTrigger className={className}>Edit</AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>
@@ -29,7 +29,7 @@ const Dialog = ({ button, className, id, method }) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction className="bg-[#4d4dfd] hover:bg-[#4d4df0]">
+              <AlertDialogAction>
                 <Link href={`/posts/edit-post/${id}`}>Continue</Link>
               </AlertDialogAction>
             </AlertDialogFooter>
@@ -39,9 +39,9 @@ const Dialog = ({ button, className, id, method }) => {
     );
   } else if (button == "delete") {
     return (
-      <div className={className}>
+      <div >
         <AlertDialog>
-          <AlertDialogTrigger>Delete</AlertDialogTrigger>
+          <AlertDialogTrigger className={className}>Delete</AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>

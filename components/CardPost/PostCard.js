@@ -13,7 +13,7 @@ function PostCard({ post }) {
             <span className="author-label">Author: </span>
             {post.author}
           </p>
-          <p>❤️ : {post.likes}</p>
+          <p>❤️ : {post.likes.length}</p>
         </div>
       </div>
 

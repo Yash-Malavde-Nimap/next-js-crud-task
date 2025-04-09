@@ -10,8 +10,10 @@ import { Button } from "@/components/ui/button";
 // import { useEffect } from "react";
 // import { useRouter } from "next/router";
 import Image from "next/image";
+import Interactive from "@/components/Interactive";
 
 export default function Home() {
+  // await new Promise((resolve) => setTimeout(resolve, 3000))
   // const router = useRouter();
 
   // let user;
@@ -57,6 +59,8 @@ export default function Home() {
                 ) : (
             )} */}
           </div>
+
+          {/* <Interactive /> */}
         </div>
 
         <div className="right-div">

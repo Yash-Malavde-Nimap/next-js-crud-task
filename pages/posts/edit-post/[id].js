@@ -166,8 +166,8 @@ export default function EditPost({ post }) {
       description: post.description || "",
       author: post.author || "",
       tags: post.tags ? post.tags.join(", ") : "",
-      likes: post.likes || 0,
-      comments: post.comments || 0,
+      likes: post.likes || [],
+      comments: post.comments || [],
     },
   });
 
@@ -192,10 +192,10 @@ export default function EditPost({ post }) {
       author: data.author,
       updatedAt: new Date().toLocaleString(),
       tags: tagsArray,
-      likes: parseInt(data.likes),
-      comments: parseInt(data.comments),
       image_url:
         "https://img.freepik.com/free-photo/creative-copywriting-commercial-text-seo-editing_107791-15687.jpg?semt=ais_hybrid",
+      // likes: parseInt(data.likes),
+      // comments: parseInt(data.comments),
     };
 
     await editDataAPI(newPost, id);

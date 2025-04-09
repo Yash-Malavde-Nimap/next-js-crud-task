@@ -18,10 +18,10 @@ export default function CreatePost() {
       title: "",
       description: "",
       author: "",
-      date: "",
+      createdAt: "",
       tags: "",
-      likes: 0,
-      comments: 0,
+      likes: [],
+      comments: [],
     },
   });
 
@@ -29,15 +29,17 @@ export default function CreatePost() {
     // Split tags by comma and trim spaces
     const tagsArray = data.tags.split(",").map((tag) => tag.trim());
 
+    const name = FormData.get("name")
+
     const newPost = {
       id: "" + Date.now().toString(),
       title: data.title,
       description: data.description,
       author: data.author,
-      date: "" + new Date().toLocaleString(),
+      createdAt: "" + new Date().toLocaleString(),
       tags: tagsArray,
-      likes: parseInt(data.likes),
-      comments: parseInt(data.comments),
+      likes: data.likes,
+      comments: data.comments,
       image_url:
         "https://img.freepik.com/free-photo/creative-copywriting-commercial-text-seo-editing_107791-15687.jpg?semt=ais_hybrid",
     };
