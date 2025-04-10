@@ -255,6 +255,8 @@ export default function EditPost({ post }) {
           <Button label="Edit Post" type="submit" className="submit-btn" />
         </form>
       </div>
+
+      
     </div>
   );
 }

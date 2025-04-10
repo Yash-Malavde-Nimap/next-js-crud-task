@@ -4,6 +4,7 @@ import Dialog from "@/components/DialogBox/Dialog";
 import { deleteAPI } from "@/pages/posts/_actions/post_actions";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Post({ post }) {
   let isAuthenticated = true;
@@ -27,7 +28,6 @@ export default function Post({ post }) {
           <h2 className="title">{post.title}</h2>
           <div className="details">
             <div className="left">
-              
               <div className="metaInfo">
                 <p className="metaText">
                   <strong>Author : </strong>
@@ -59,9 +59,13 @@ export default function Post({ post }) {
                 <ul className="tagsList">
                   {post.tags &&
                     post.tags.map((tag, index) => (
-                      <li key={index} className="tag">
+                      <Link
+                        href={`/posts/category/${tag.split(" ").join("-").toLowerCase()}`}
+                        key={index}
+                        className="tag"
+                      >
                         {tag}
-                      </li>
+                      </Link>
                     ))}
                 </ul>
               </div>

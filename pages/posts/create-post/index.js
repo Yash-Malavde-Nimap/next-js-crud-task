@@ -29,7 +29,7 @@ export default function CreatePost() {
     // Split tags by comma and trim spaces
     const tagsArray = data.tags.split(",").map((tag) => tag.trim());
 
-    const name = FormData.get("name")
+    // const name = FormData.get("name")
 
     const newPost = {
       id: "" + Date.now().toString(),
